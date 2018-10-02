@@ -15,7 +15,12 @@ let blankWord = []
 
 //loop through the randomly chosen word to make a blank to display on game start
 for (let i = 0; i < secretWord.length; i++) {
-    blankWord.push("_");
+    if(secretWord.charCodeAt(i) === 32){
+        blankWord.push(" ");
+    }else{
+        blankWord.push("_")
+    }
+    
 }
 
 //console.log(blankWord.join(''));
@@ -33,7 +38,7 @@ document.onkeyup = function (event) {
     // }
 
 
-    // the outter if state validates key presses, only executing game code for letters hit, ignoring all numbers, symbols, and other keys
+    // the outter if statement validates key presses, only executing game code for letters hit, ignoring all numbers, symbols, and other keys
     if (letterRegex.test(keyPressed) && !keyFilter.includes(keyPressed)) {
         //console.log(`letter hit`);
         //If letter has not been guessed yet, add to array and check names. If key has been guessed already, nothing will happen
