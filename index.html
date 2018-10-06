@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,24 @@
     <title>Guess That Meme!</title>
     <link rel="stylesheet" href="assets/styles/style.css">
 </head>
+
 <body>
-    <h1>Guess That Meme!</h1>
-    <p>Take 10 turns to guess a randomly selected meme's name</p>
+    <div class="title container">
+        <h1>Guess That Meme!</h1>
+        <p>Take 10 turns to guess a randomly selected meme's name</p>
+    </div>
+
+<div class="container">
+        <p id="blankWordDisplay"></p>
+
+        <p>Letters guessed: <span id="guessed"></span></p>
+        <p>Lives remaining: <span id="lifeDisplay"></span></p>
+        <p>Total Wins: <span id="winsDisplay">0</span></p>
+</div>
     
-    <p id="blankWordDisplay"></p>
-       
-    <p>Letters guessed: <span id="guessed"></span></p>
-    <p>Lives remaining: <span id="lifeDisplay"></span></p>
-    <p>Total Wins: <span id="winsDisplay">0</span></p>
 
 </body>
 
 <script src="assets/scripts/app.js"></script>
+
 </html>

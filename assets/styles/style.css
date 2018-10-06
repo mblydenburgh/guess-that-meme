@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(150, 150, 150);
+    color: white;
+}
+
+#blankWordDisplay{
+    font-size: 24px;
+    letter-spacing: .25em;
+}
+
+.title{
+    font-size: 1.75em;
+}
+
+.container{
+    text-align-last: center;
+}
+
