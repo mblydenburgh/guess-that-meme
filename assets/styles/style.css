@@ -1,6 +1,7 @@
 body{
     background-color: rgb(150, 150, 150);
     color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 #blankWordDisplay{
@@ -10,9 +11,14 @@ body{
 
 .title{
     font-size: 1.75em;
+    text-shadow: 1px 1px red;
 }
 
 .container{
     text-align-last: center;
+}
+
+#imgDiv{
+    text-align: center
 }
 

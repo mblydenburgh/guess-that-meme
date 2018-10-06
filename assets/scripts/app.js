@@ -1,6 +1,27 @@
 // Define variables to use
 //
-const names = ["doge", "grumpy cat", "dat boi", "scumbag steve", "distracted boyfriend", "aliens", "philosoraptor", "success kid", "dramatic chipmunk", "squinting fry", "thanks obama", "sarcastic willy wonka", "nyan cat", "crying michael jordan", "harambe", "u mad bro", "rick rolling", "all your base are belong to us", "trollface"];
+const memes = [
+    { name: "doge", url: "assets/images/doge.jpg" },
+    { name: "grumpy cat", url: "assets/images/grumpycat.jpg" },
+    { name: "dat boi", url: "assets/images/datboi.png" },
+    { name: "scumbag steve", url: "assets/images/steve.png" },
+    { name: "distracted boyfriend", url: "assets/images/distracted.jpg" },
+    { name: "aliens", url: "assets/images/aliens.jpg" },
+    { name: "philosoraptor", url: "assets/images/philosoraptor.jpg" },
+    { name: "success kid", url: "assets/images/success.jpg" },
+    { name: "dramatic chipmunk", url: "assets/images/dchipmunk.gif" },
+    { name: "squinting fry", url: "assets/images/fry.png" },
+    { name: "thanks obama", url: "assets/images/obama.jpg" },
+    { name: "sarcastic willy wonka", url: "assets/images/willywonka.jpg" },
+    { name: "nyan cat", url: "assets/images/nyan.gif" },
+    { name: "crying michael jordan", url: "assets/images/jordan.jpg" },
+    { name: "harambe", url: "assets/images/harambe.jpg" },
+    { name: "u mad bro", url: "assets/images/youmad.jpg" },
+    { name: "rick rolling", url: "assets/images/rick.jpg" },
+    { name: "all your base are belong to us", url: "assets/images/allyourbase.jpg" },
+    { name: "trollface", url: "assets/images/troll.jpg" }
+];
+
 let guessedLetters = []; //holds the key presses so use cannot waste life on same guess
 let lives = 10;
 let wins = 0;
@@ -8,6 +29,7 @@ const guessedLetterSpan = document.getElementById("guessed");
 const blankWordP = document.getElementById("blankWordDisplay");
 const lifeDisplaySpan = document.getElementById("lifeDisplay");
 const winsDisplaySpan = document.getElementById("winsDisplay");
+const imgDiv = document.getElementById("imgDiv");
 const letterRegex = /[a-z]/;
 const keyFilter = ["shift", "alt", "control", "arrowdown", "arrowup", "arrowleft", "arrowright", "meta", "space", "escape", "enter", "tab", "backspace"];
 
@@ -26,14 +48,14 @@ let words = {};
 */
 let newGame = function startGame() {
 
-    let wordIndex = Math.floor(Math.random() * names.length); // generates a random number to pick a random name
+    let wordIndex = Math.floor(Math.random() * memes.length); // generates a random number to pick a random name
     //console.log(names[wordIndex]);
-    let secretWord = names[wordIndex]; // the randomly selected meme name
+    let secretWord = memes[wordIndex].name; // the randomly selected meme name
     //console.log(`secret word: ${secretWord}`)
     let blankWord = makeBlankWord(secretWord); // a copy of the meme name, with all letters replaced with _
     //console.log(blankWord);
     let words = { //holds the meme name and empty copy to return
-        secretWord: names[wordIndex],
+        secretWord: secretWord,
         blankWord: blankWord
     }
     blankWordP.textContent = words.blankWord.join('');
@@ -88,12 +110,32 @@ function updateLetters(words, keyPressed) {
 
     blankWordP.textContent = solvedWord;
     if (solvedWord === words.secretWord) { // after blankWord updates, check if it was the last missing letter
-        setTimeout(alert(`Winner winner chicken dinner!`), 2000);
+        // window.setTimeout(window.alert, 500, `Winner winner chicken dinner!`);
+        makeMeme();
         wins++;
         winsDisplaySpan.textContent = wins;
-        words = restartGame();
+
+        words = window.setTimeout(restartGame, 3500);
+        window.setTimeout(destroyMeme, 3500);
         return words
     }
+}
+
+function makeMeme() {
+    let img = document.createElement("img");
+    let path = memes.find(function (obj) {
+        if (obj.name === words.secretWord) {
+            console.log(`obj url: ${obj.url}`)
+            return obj.url;
+        }
+    })
+
+    img.setAttribute("src", path.url);
+    imgDiv.appendChild(img);
+}
+
+function destroyMeme() {
+    imgDiv.innerHTML = "";
 }
 
 // Main logic below
