@@ -96,6 +96,8 @@ function updateLetters(words, keyPressed) {
     }
 }
 
+// Main logic below
+
 window.onload = function () {
     words = newGame(); //on window load, begin a new game
     //console.log(`on window load, secret word: ${words.secretWord}`);
